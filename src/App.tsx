@@ -1,10 +1,11 @@
+import Container from "./components/Container";
+import Header from "./components/Header";
+
 function App() {
   return (
-    <div className="flex w-screen justify-center">
-      <h1 className="text-3xl font-bold p-32">
-        Tailwind installed, we are ready to start.
-      </h1>
-    </div>
+    <Container>
+      <Header />
+    </Container>
   );
 }
 
