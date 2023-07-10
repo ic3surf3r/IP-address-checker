@@ -4,7 +4,7 @@ import { useMediaQuery } from "react-responsive";
 function SearchBar() {
   const isSmallScreen = useMediaQuery({ maxWidth: 640 });
   return (
-    <div className="w-4/5 flex shadow-md">
+    <div className="w-4/5 flex shadow-md md:max-w-xl">
       <input
         type="text"
         className="bg-white w-5/6 rounded-xl rounded-r-none p-4 font-rubik"
