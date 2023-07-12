@@ -12,7 +12,7 @@ function makeURL(ipValue: string) {
   return reqURL;
 }
 
-export const getIPData = async (ipValue: string | null, dispatch: any) => {
+export const getIPData = async (ipValue: string | null) => {
   if (ipValue === null) {
     const res = await axios.get(firstCall);
     const {
@@ -25,6 +25,7 @@ export const getIPData = async (ipValue: string | null, dispatch: any) => {
       carrier: { name: carrierName },
       time_zone: { offset: timeZoneOffset },
     } = res.data;
+    const isLoading = false;
     const balls = {
       ip,
       city,
@@ -34,8 +35,9 @@ export const getIPData = async (ipValue: string | null, dispatch: any) => {
       longitude,
       carrierName,
       timeZoneOffset,
+      isLoading,
     };
-    dispatch({ type: "SET_IP", payload: balls });
+    return balls;
   } else if (ipv4Regex.test(ipValue) || ipv6Regex.test(ipValue)) {
     const res = await axios.get(makeURL(ipValue));
     const {
@@ -45,9 +47,10 @@ export const getIPData = async (ipValue: string | null, dispatch: any) => {
       postal,
       latitude,
       longitude,
-      carrier: { name: carrierName },
+      asn: { name: carrierName },
       time_zone: { offset: timeZoneOffset },
     } = res.data;
+    const isLoading = false;
     const balls = {
       ip,
       city,
@@ -57,8 +60,9 @@ export const getIPData = async (ipValue: string | null, dispatch: any) => {
       longitude,
       carrierName,
       timeZoneOffset,
+      isLoading,
     };
-    dispatch({ type: "SET_IP", payload: balls });
+    return balls;
   } else {
     return "Bad Request";
   }

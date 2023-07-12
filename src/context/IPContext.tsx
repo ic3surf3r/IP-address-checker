@@ -1,5 +1,4 @@
-import { createContext, useReducer } from "react";
-import ipReducer from "./IPReducer";
+import { createContext, useState } from "react";
 
 type StateType = {
   ip: string;
@@ -10,9 +9,10 @@ type StateType = {
   longitude: number;
   carrierName: string;
   timezoneOffset: string;
+  isLoading: boolean;
 };
 
-const initialState: StateType = {
+const baba: StateType = {
   ip: "",
   city: "",
   country: "",
@@ -21,6 +21,7 @@ const initialState: StateType = {
   longitude: 0,
   carrierName: "",
   timezoneOffset: "",
+  isLoading: true,
 };
 
 type ChildrenProps = {
@@ -28,15 +29,15 @@ type ChildrenProps = {
 };
 
 const IPContext = createContext<{
-  state: StateType;
-  dispatch: React.Dispatch<any>;
-}>({ state: initialState, dispatch: () => null });
+  data: StateType;
+  setData: any;
+}>({ data: baba, setData: null });
 
 export const IPProvider = ({ children }: ChildrenProps) => {
-  const [state, dispatch] = useReducer(ipReducer, initialState);
+  const [data, setData] = useState(baba);
   const contextValue: any = {
-    ...state,
-    dispatch,
+    data,
+    setData,
   };
 
   return (

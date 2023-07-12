@@ -13,7 +13,6 @@ const ipReducer = (state: StateType, action: any) => {
   switch (action.type) {
     case "SET_IP":
       return {
-        ...state,
         ip: action.payload.ip,
         city: action.payload.city,
         country: action.payload.country_name,
@@ -22,9 +21,13 @@ const ipReducer = (state: StateType, action: any) => {
         longitude: action.payload.longitude,
         carrierName: action.payload.carrierName,
         timezoneOffset: action.payload.timeZoneOffset,
+        isLoading: false,
       };
     default:
-      return state;
+      return {
+        ...state,
+        isLoading: true,
+      };
   }
 };
 

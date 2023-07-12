@@ -5,15 +5,16 @@ import IPContext from "../context/ipContext";
 
 function SearchBar() {
   const [ip, setIp] = useState("");
-  const { dispatch } = useContext(IPContext);
+  const value = useContext(IPContext);
+  const { setData } = value;
 
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setIp(e.target.value);
   };
 
-  const submitIp = (e?: any) => {
-    e && e.preventDefault();
-    getIPData(ip, dispatch);
+  const submitIp = () => {
+    console.log(`ip sent: ${ip}`);
+    setData(getIPData(ip));
   };
 
   return (
@@ -26,7 +27,7 @@ function SearchBar() {
         onChange={onChange}
       />
       <div
-        className="bg-black rounded-xl rounded-l-none flex justify-center items-center w-1/6"
+        className="bg-black rounded-xl rounded-l-none flex justify-center items-center w-1/6 cursor-pointer"
         onClick={submitIp}
       >
         <img src={arrowIcon} alt="Go" />
