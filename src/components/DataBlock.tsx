@@ -2,6 +2,7 @@ import { useContext, useEffect } from "react";
 import IPContext from "../context/ipContext";
 import DataSlot from "./DataSlot";
 import { getIPData } from "../functions/ipData";
+import { toast } from "react-toastify";
 
 function DataBlock() {
   const value = useContext(IPContext);
@@ -16,7 +17,12 @@ function DataBlock() {
   }, []);
 
   const getInitialData = async () => {
-    setData(await getIPData(null));
+    try {
+      const stuff = await getIPData(null);
+      setData(stuff);
+    } catch (error) {
+      toast.error("Bad Request");
+    }
   };
 
   return (

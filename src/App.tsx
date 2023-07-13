@@ -2,6 +2,8 @@ import Container from "./components/Container";
 import Header from "./components/Header";
 import Map from "./components/Map";
 import { IPProvider } from "./context/ipContext";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function App() {
   return (
@@ -10,6 +12,7 @@ function App() {
         <Header />
         <Map />
       </IPProvider>
+      <ToastContainer />
     </Container>
   );
 }

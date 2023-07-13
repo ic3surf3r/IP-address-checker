@@ -60,6 +60,8 @@ export const getIPData = async (ipValue: string | null) => {
     };
     return balls;
   } else {
-    return "Bad Request";
+    throw new Error("Bad Request");
+
+    return;
   }
 };

@@ -2,6 +2,7 @@ import { useState, useContext } from "react";
 import arrowIcon from "../assets/icon-arrow.svg";
 import { getIPData } from "../functions/ipData";
 import IPContext from "../context/ipContext";
+import { toast } from "react-toastify";
 
 function SearchBar() {
   const [ip, setIp] = useState("");
@@ -19,7 +20,12 @@ function SearchBar() {
   };
 
   const submitIp = async () => {
-    setData(await getIPData(ip));
+    try {
+      const stuff = await getIPData(ip);
+      setData(stuff);
+    } catch (error) {
+      toast.error("Bad Request");
+    }
   };
 
   return (
