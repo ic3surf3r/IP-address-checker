@@ -1,12 +1,13 @@
 import { useContext, useEffect, useState } from "react";
-import IPContext from "../context/ipContext";
-import { Icon } from "leaflet";
+import IPContext from "../context/IPContext";
+import { Icon, LatLng } from "leaflet";
 import "leaflet/dist/leaflet.css";
 import locationIcon from "../assets/icon-location.svg";
 import { MapContainer, TileLayer, Marker, useMap } from "react-leaflet";
 
 function Map() {
   const [center, setCenter] = useState([0, 0]);
+  const location = new LatLng(center[0], center[1]);
   const value = useContext(IPContext);
   const { data } = value;
 
@@ -25,7 +26,7 @@ function Map() {
     const map = useMap();
 
     useEffect(() => {
-      map.setView(center, map.getZoom());
+      map.setView(location, map.getZoom());
     }, [center, map]);
 
     return null;
@@ -34,7 +35,7 @@ function Map() {
   return (
     <div className="w-full h-2/3 z-0" id="map">
       <MapContainer
-        center={center}
+        center={location}
         zoom={13}
         scrollWheelZoom={true}
         zoomControl={false}
@@ -46,7 +47,7 @@ function Map() {
           attribution='Map data &copy; <a href="https://www.openstreetmap.org/" target="_blank">OpenStreetMap</a> contributors'
         />
 
-        <Marker position={center} icon={customIcon}></Marker>
+        <Marker position={location} icon={customIcon}></Marker>
       </MapContainer>
     </div>
   );

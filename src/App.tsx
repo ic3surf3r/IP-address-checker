@@ -1,7 +1,7 @@
 import Container from "./components/Container";
 import Header from "./components/Header";
 import Map from "./components/Map";
-import { IPProvider } from "./context/ipContext";
+import { IPProvider } from "./context/IPContext";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 

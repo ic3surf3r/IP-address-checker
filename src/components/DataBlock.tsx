@@ -1,5 +1,5 @@
 import { useContext, useEffect } from "react";
-import IPContext from "../context/ipContext";
+import IPContext from "../context/IPContext";
 import DataSlot from "./DataSlot";
 import { getIPData } from "../functions/ipData";
 import { toast } from "react-toastify";

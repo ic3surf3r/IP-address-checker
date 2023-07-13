@@ -1,7 +1,7 @@
 import { useState, useContext } from "react";
 import arrowIcon from "../assets/icon-arrow.svg";
 import { getIPData } from "../functions/ipData";
-import IPContext from "../context/ipContext";
+import IPContext from "../context/IPContext";
 import { toast } from "react-toastify";
 
 function SearchBar() {
