@@ -6,15 +6,16 @@ import IPContext from "../context/ipContext";
 function SearchBar() {
   const [ip, setIp] = useState("");
   const value = useContext(IPContext);
-  const { setData } = value;
+  const { data, setData } = value;
 
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setIp(e.target.value);
   };
 
-  const submitIp = () => {
+  const submitIp = async () => {
     console.log(`ip sent: ${ip}`);
-    setData(getIPData(ip));
+    setData(await getIPData(ip));
+    console.log(data);
   };
 
   return (

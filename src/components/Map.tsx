@@ -12,11 +12,13 @@ function Map() {
   const markerRef = useRef<LeafletMarker>(null);
 
   const { latitude, longitude } = data;
+  const lat: number = Number(latitude.toFixed(3));
+  const lng: number = Number(longitude.toFixed(3));
 
   useEffect(() => {
     if (markerRef.current) {
-      markerRef.current.setLatLng([latitude, longitude]);
-      console.log(latitude, longitude);
+      markerRef.current.setLatLng([lat, lng]);
+      console.log(lat, lng);
     }
   }, [latitude, longitude]);
 

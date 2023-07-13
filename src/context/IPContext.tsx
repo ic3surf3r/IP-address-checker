@@ -3,24 +3,24 @@ import { createContext, useState } from "react";
 type StateType = {
   ip: string;
   city: string;
-  country: string;
+  country_name: string;
   postal: string;
   latitude: number;
   longitude: number;
   carrierName: string;
-  timezoneOffset: string;
+  timeZoneOffset: string;
   isLoading: boolean;
 };
 
 const baba: StateType = {
   ip: "",
   city: "",
-  country: "",
+  country_name: "",
   postal: "",
   latitude: 0,
   longitude: 0,
   carrierName: "",
-  timezoneOffset: "",
+  timeZoneOffset: "",
   isLoading: true,
 };
 
