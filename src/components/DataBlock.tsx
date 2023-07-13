@@ -7,25 +7,16 @@ function DataBlock() {
   const value = useContext(IPContext);
   const { data, setData } = value;
 
-  const {
-    ip,
-    city,
-    country_name,
-    postal,
-    timeZoneOffset,
-    carrierName,
-    isLoading,
-  } = data;
+  const { ip, city, country_name, postal, timeZoneOffset, carrierName } = data;
 
   useEffect(() => {
-    if (isLoading) {
-      getInitialData;
+    if (ip === "") {
+      getInitialData();
     }
   }, []);
 
   const getInitialData = async () => {
-    await setData(getIPData(null));
-    console.log(data);
+    setData(await getIPData(null));
   };
 
   return (

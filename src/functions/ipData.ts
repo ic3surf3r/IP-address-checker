@@ -25,7 +25,6 @@ export const getIPData = async (ipValue: string | null) => {
       carrier: { name: carrierName },
       time_zone: { offset: timeZoneOffset },
     } = res.data;
-    const isLoading = false;
     const balls = {
       ip,
       city,
@@ -35,7 +34,6 @@ export const getIPData = async (ipValue: string | null) => {
       longitude,
       carrierName,
       timeZoneOffset,
-      isLoading,
     };
     return balls;
   } else if (ipv4Regex.test(ipValue) || ipv6Regex.test(ipValue)) {
@@ -50,7 +48,6 @@ export const getIPData = async (ipValue: string | null) => {
       asn: { name: carrierName },
       time_zone: { offset: timeZoneOffset },
     } = res.data;
-    const isLoading = false;
     const balls = {
       ip,
       city,
@@ -60,7 +57,6 @@ export const getIPData = async (ipValue: string | null) => {
       longitude,
       carrierName,
       timeZoneOffset,
-      isLoading,
     };
     return balls;
   } else {

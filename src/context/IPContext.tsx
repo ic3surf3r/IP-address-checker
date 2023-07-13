@@ -9,7 +9,6 @@ type StateType = {
   longitude: number;
   carrierName: string;
   timeZoneOffset: string;
-  isLoading: boolean;
 };
 
 const baba: StateType = {
@@ -21,7 +20,6 @@ const baba: StateType = {
   longitude: 0,
   carrierName: "",
   timeZoneOffset: "",
-  isLoading: true,
 };
 
 type ChildrenProps = {
