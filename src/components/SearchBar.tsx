@@ -6,16 +6,20 @@ import IPContext from "../context/ipContext";
 function SearchBar() {
   const [ip, setIp] = useState("");
   const value = useContext(IPContext);
-  const { data, setData } = value;
+  const { setData } = value;
 
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setIp(e.target.value);
   };
 
+  const handleKeyPress = (e: React.KeyboardEvent) => {
+    if (e.key === "Enter") {
+      submitIp();
+    }
+  };
+
   const submitIp = async () => {
-    console.log(`ip sent: ${ip}`);
     setData(await getIPData(ip));
-    console.log(data);
   };
 
   return (
@@ -26,6 +30,7 @@ function SearchBar() {
         placeholder={"Search for any IP"}
         value={ip}
         onChange={onChange}
+        onKeyDown={handleKeyPress}
       />
       <div
         className="bg-black rounded-xl rounded-l-none flex justify-center items-center w-1/6 cursor-pointer"
