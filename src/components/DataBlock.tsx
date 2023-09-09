@@ -21,7 +21,12 @@ function DataBlock() {
       const stuff = await getIPData(null);
       setData(stuff);
     } catch (error) {
-      toast.error("Bad Request");
+      try {
+        const fallbackdata = await getIPData("128.105.39.11");
+        setData(fallbackdata);
+      } catch (error) {
+        toast.error("Oops");
+      }
     }
   };
 
